@@ -1,24 +1,31 @@
-<html lang="pt-br">
-
+<!doctype html>
+<html lang="pt-BR">
 <head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap">
-    <link rel="stylesheet" href="style.css">
-    <title>Lista de tarefas</title>
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Organize suas tarefas com edição, filtros e salvamento local no navegador.">
+  <title>Lista de tarefas | Marcos Solutions</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
-
 <body>
-
-    <div class="container">
-        <h1>Lista de tarefas</h1>
-        <input type="text" id="taskInput" placeholder="Adicione uma tarefa...">
-        <button onclick="addTask()">Adicionar</button>
-        <ul id="taskList"></ul>
-    </div>
-
-    <script src="script.js"></script>
-    
+  <main class="container">
+    <header><p class="eyebrow">MARCOS SOLUTIONS / ORGANIZAÇÃO</p><h1>Um passo de cada vez.</h1><p class="intro">Tire as ideias da cabeça. Organize o que vem a seguir.</p></header>
+    <section class="workspace" aria-labelledby="listTitle">
+      <div class="heading"><h2 id="listTitle">Minhas tarefas</h2><span id="count">0 pendentes</span></div>
+      <form id="taskForm">
+        <label for="taskInput">O que você precisa fazer?</label>
+        <div class="entry"><input id="taskInput" name="task" maxlength="160" required placeholder="Ex.: revisar a apresentação do projeto" autocomplete="off"><button id="submitTask" type="submit">Adicionar tarefa</button></div>
+        <button id="cancelEdit" type="button" class="secondary" hidden>Cancelar edição</button>
+      </form>
+      <div class="filters" role="group" aria-label="Filtrar tarefas"><button type="button" data-filter="all" aria-pressed="true">Todas</button><button type="button" data-filter="active" aria-pressed="false">Pendentes</button><button type="button" data-filter="done" aria-pressed="false">Concluídas</button></div>
+      <p id="feedback" role="status" aria-live="polite"></p>
+      <p id="storageWarning" role="alert" hidden></p>
+      <ul id="taskList" aria-label="Tarefas"></ul>
+      <p id="empty">Sua lista está livre. Adicione sua primeira tarefa acima.</p>
+      <button id="undoDelete" type="button" class="secondary" hidden>Desfazer última exclusão</button>
+    </section>
+    <footer>Salvo neste navegador · Sem cadastro<br><small>Os dados não são sincronizados. Limpar os dados do navegador apaga sua lista.</small></footer>
+  </main>
 </body>
+</html>
